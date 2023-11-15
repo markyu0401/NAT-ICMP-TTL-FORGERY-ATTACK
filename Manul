@@ -4,8 +4,15 @@ Router: WAN IP 172.16.100.10, LAN IP 192.168.1.10
 Victim: 192.168.1.50
 Configuring the Router:
 
-Access the router container using ```docker exec -it router /bin/bash```.
-Run bash vyos_routes.sh to load routes and iptables rules.
+Access the router container using 
+```
+docker exec -it router /bin/bash
+```
+Run 
+```
+bash vyos_routes.sh
+``` 
+to load routes and iptables rules.
 Starting the Attacker Server:
 
 Access the attacker container using ```docker exec -it docker exec -it attacker /bin/bash```.
