@@ -9,23 +9,23 @@ Access the router container using
 Run ``bash vyos_routes.sh`` to load routes and iptables rules.
 Starting the Attacker Server:
 
-Access the attacker container using ```docker exec -it docker exec -it attacker /bin/bash```.
+Access the attacker container using ``docker exec -it docker exec -it attacker /bin/bash``.
 Start the server with ./code/pwnat -s.
 Configuring the Victim:
 
-Access the victim container using ```docker exec -it victim /bin/bash```.
-Run ```./code/pwnat -c 8000 172.16.100.200 purdue.edu 80``` to configure the client for the NAT exploit.
+Access the victim container using ``docker exec -it victim /bin/bash``.
+Run ``./code/pwnat -c 8000 172.16.100.200 purdue.edu 80`` to configure the client for the NAT exploit.
+
 Testing the Exploit:
+On the Docker host, run ``nc 192.168.1.50 8000`` to test the UDP tunnel.
 
-On the Docker host, run nc 192.168.1.50 8000 to test the UDP tunnel.
 Understanding the Exploit:
-
 The exploit uses ICMP type 8 (echo request) and type 11 (time-to-live exceeded) to create a transparent UDP tunnel in NAT.
-Implementing Countermeasures:
 
+Implementing Countermeasures:
 On the VyOS router container, run the following commands to block malicious ICMP packets:
-iptables -A INPUT -p icmp --icmp-type 11 -j DROP
-iptables -A OUTPUT -p icmp --icmp-type 11 -j DROP
+``iptables -A INPUT -p icmp --icmp-type 11 -j DROP``
+``iptables -A OUTPUT -p icmp --icmp-type 11 -j DROP``
 Understanding Limitations:
 
 The exploit's effectiveness is limited in Docker container networking due to direct routes from each Docker container network to the raw Network Interface Card (NIC).
