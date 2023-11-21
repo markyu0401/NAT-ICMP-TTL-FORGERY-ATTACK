@@ -1,5 +1,5 @@
 # NAT ICMP TTL Forgery Attack
-By Qingchen Yu, Kusiak <br>
+By Kusiak， Qingchen Yu <br>
 
 ## Description of the attack
 NAT (network address translation) is a widely used method to mask and translate internal private
