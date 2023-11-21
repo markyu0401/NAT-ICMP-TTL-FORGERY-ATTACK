@@ -9,7 +9,7 @@ Access the router container using
 Run ``bash vyos_routes.sh`` to load routes and iptables rules.
 Starting the Attacker Server:
 
-Access the attacker container using ``docker exec -it docker exec -it attacker /bin/bash``.
+Access the attacker container using ``docker exec -it attacker /bin/bash``.
 Start the server with ``./code/pwnat -s``.
 Configuring the Victim:
 
