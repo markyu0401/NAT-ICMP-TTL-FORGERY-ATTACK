@@ -23,7 +23,7 @@ RUN echo "#!/bin/bash" > /usr/libexec/vyos/init/vyos-config && \
     echo "sg vyattacfg -c '/opt/vyatta/sbin/vyatta-boot-config-loader /config.init'" >> /usr/libexec/vyos/init/vyos-config
 
 # Copy the vyos_routes.sh script into the container
-COPY vyos_routes.sh /vyos_routes.sh
+COPY /vyos_routes.sh /vyos_routes.sh
 
 # Set the entrypoint to init
 ENTRYPOINT ["/sbin/init"]
