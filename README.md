@@ -57,7 +57,7 @@ To access the containers
 ```
 docker exec -it router /bin/bash
 docker exec -it victim /bin/bash
-docker exec -it router /bin/bash
+docker exec -it attacker /bin/bash
 ```
 ### Usage
 CHEESEHub has the instructions provided by the SEED Project. The user will have to compile the programs available and figure out how to carry out the steps in the instructions. 
