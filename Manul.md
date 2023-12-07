@@ -4,6 +4,18 @@ Router: WAN IP 172.16.100.10, LAN IP 192.168.1.10
 Victim: 192.168.1.50
 Configuring the Router:
 
+Set the default route for attacker by using the following command 
+```
+ip route del default
+ip route add default via 172.16.100.10 dev eth0
+```
+
+Set the default route for victim by using the following command 
+```
+ip route del default
+ip route add default via 192.168.1.10 dev eth0
+
+```
 Access the router container using 
 ``docker exec -it router /bin/bash``
 Run ``bash vyos_routes.sh`` to load routes and iptables rules.
