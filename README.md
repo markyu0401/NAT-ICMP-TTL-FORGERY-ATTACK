@@ -45,12 +45,12 @@ docker build -t router-image .
 ```
 After images are built, containers have to run in a certain condition
 ```
-docker run -it --name attacker --privileged --network wan-net --ip 172.16.100.200 -v $(pwd)/exploitCode/:/code/ attacker:latest
-docker run -it --name victim --privileged --network lan-net --ip 192.168.1.50 -v $(pwd)/exploitCode/:/code/ victim:latest```
+docker run -it --name attacker --privileged --network wan-net --ip 172.16.100.200 -v $docker $(pwd)/exploitCode/ attacker
+docker run -it --name victim --privileged --network lan-net --ip 192.168.1.50 -v $(pwd)/exploitCode/ victim
 ```
 First connect the router container to the wan net, then connect to the LAN net. 
 ```
-docker run -itd --name router --privileged --network wan-net --ip 172.16.100.10 -v /lib/modules:/lib/modules:ro -v $(pwd)/vyos/config.init:/config.init -v $(pwd)/vyos/config:/opt/vyatta/etc/config router:latest
+docker run -itd --name router --privileged --network wan-net --ip 172.16.100.10 -v /lib/modules:/lib/modules:ro -v $(pwd)/vyos/config:/opt/vyatta/etc/config your_custom_vyos_image
 docker network connect --ip 192.168.1.10 lan-net router
 ```
 To access the containers 
