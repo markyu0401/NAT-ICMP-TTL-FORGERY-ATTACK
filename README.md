@@ -45,7 +45,7 @@ docker build -t router-image .
 ```
 After images are built, containers have to run in a certain condition
 ```
-docker run -it --name attacker --privileged --network wan-net --ip 172.16.100.200 -v $docker $(pwd)/exploitCode/ attacker
+docker run -it --name attacker --privileged --network wan-net --ip 172.16.100.200 -v $docker $(pwd)/exploitCode/ attacker-image
 docker run -it --name victim --privileged --network lan-net --ip 192.168.1.50 -v $(pwd)/exploitCode/ victim
 ```
 First connect the router container to the wan net, then connect to the LAN net. 
